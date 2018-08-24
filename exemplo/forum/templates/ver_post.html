@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <div>
+        <h2>{{post.titulo}}</h2>
+        <small>{{post.data_criacao}}</small>
+        <p>{{ post.conteudo }}</p>
+        <a href="{% url 'comentar_post' post.id%}">Comentar</a>
+        <h1>Comentários</h1>
+        {% for c in post.comment_set.all %}
+            <ul>
+                <li>{{c}} <a href="">Editar</a></li>
+            </ul>
+        {% endfor %}
+    </div>
+    <a href="{% url 'index' %}">Voltar</a>
+{% endblock %}
